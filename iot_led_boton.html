@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control de LED IoT - ESP32</title>
+    <link rel="stylesheet" href="iot_led_boton.css" />
+  </head>
+  <body>
+    <main class="led-page">
+      <h1 class="sr-only">Control de LED IoT - ESP32</h1>
+
+      <p class="led-title">Control de LED — ESP32</p>
+
+      <section class="led-bulb-wrap" aria-label="Indicador de estado del LED">
+        <div class="led-glow" id="glow"></div>
+        <div class="led-circle" id="ledCircle">
+          <div class="led-inner"></div>
+        </div>
+      </section>
+
+      <div class="status-badge" id="statusBadge" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="statusText">Apagado</span>
+      </div>
+
+      <button class="toggle-btn" id="toggleBtn" type="button" onclick="toggleLed()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+          <line x1="12" y1="2" x2="12" y2="12"></line>
+        </svg>
+        <span id="btnLabel">Encender</span>
+      </button>
+
+<!--   <p class="api-hint">
+        Llamará a <code id="apiEndpoint">POST /led/on</code> en tu ESP32
+      </p>
+    </main> -->
+
+    <script src="iot_led_boton.js"></script>
+  </body>
+</html>
