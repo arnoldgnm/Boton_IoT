@@ -11,22 +11,18 @@ const elements = {
   toggleBtn: document.getElementById('toggleBtn'),
 };
 
-async function toggleLed() {
-  elements.toggleBtn.disabled = true;
-  elements.toggleBtn.classList.add('loading');
-
+function toggleLed() {
+  // Actualiza la interfaz inmediatamente y envía la petición en background
   isOn = !isOn;
   updateUI();
 
-  try {
-    const endpoint = isOn ? '/led/on' : '/led/off';
-    await fetch(`${ESP32_IP}${endpoint}`, { method: 'POST', mode: 'no-cors' });
-  } catch (error) {
-    console.warn('ESP32 no alcanzable (modo demo):', error);
-  } finally {
-    elements.toggleBtn.disabled = false;
-    elements.toggleBtn.classList.remove('loading');
-  }
+  const endpoint = isOn ? '/led/on' : '/led/off';
+  // Fire-and-forget: no await para no bloquear la UI
+  fetch(`${ESP32_IP}${endpoint}`, { method: 'POST', mode: 'no-cors' })
+    .catch((error) => {
+      // No bloquear la experiencia del usuario si falla la petición
+      console.warn('ESP32 no alcanzable (modo demo):', error);
+    });
 }
 
 function updateUI() {
