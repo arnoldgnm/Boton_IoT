@@ -1,4 +1,4 @@
-const ESP32_IP = 'http://192.168.1.100';
+const BACKEND_URL = 'https://TU_PROYECTO.onrender.com';
 let isOn = false;
 
 const elements = {
@@ -18,11 +18,10 @@ function toggleLed() {
 
   const endpoint = isOn ? '/led/on' : '/led/off';
   // Fire-and-forget: no await para no bloquear la UI
-  fetch(`${ESP32_IP}${endpoint}`, { method: 'POST', mode: 'no-cors' })
-    .catch((error) => {
-      // No bloquear la experiencia del usuario si falla la petición
-      console.warn('ESP32 no alcanzable (modo demo):', error);
-    });
+  fetch(`${BACKEND_URL}${endpoint}`, { method: 'POST' })
+  .then(res => res.json())
+  .then(data => console.log('Estado:', data.state))
+  .catch(err => console.warn('Error:', err));
 }
 
 function updateUI() {
