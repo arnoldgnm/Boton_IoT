@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://TU_PROYECTO.onrender.com';
+const BACKEND_URL = 'https://led-iot-backend.onrender.com';
 let isOn = false;
 
 const elements = {
