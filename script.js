@@ -31,7 +31,6 @@ function updateUI() {
   elements.statusBadge.classList.toggle('on', isActive);
   elements.statusText.textContent = isActive ? 'Encendido' : 'Apagado';
   elements.btnLabel.textContent = isActive ? 'Apagar' : 'Encender';
-  elements.apiEndpoint.textContent = isActive ? 'POST /led/on' : 'POST /led/off';
 }
 
 updateUI();
