@@ -7,7 +7,6 @@ const elements = {
   statusBadge: document.getElementById('statusBadge'),
   statusText: document.getElementById('statusText'),
   btnLabel: document.getElementById('btnLabel'),
-  apiEndpoint: document.getElementById('apiEndpoint'),
   toggleBtn: document.getElementById('toggleBtn'),
 };
 
