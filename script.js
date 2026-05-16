@@ -1,6 +1,14 @@
 const BACKEND_URL = 'https://led-iot-backend.onrender.com';
 let isOn = false;
 
+fetch(`${BACKEND_URL}/led/state`)
+  .then(res => res.json())
+  .then(data => {
+    isOn = data.state === 'on';
+    updateUI();
+  })
+  .catch(() => {}); 
+  
 const elements = {
   glow: document.getElementById('glow'),
   ledCircle: document.getElementById('ledCircle'),
